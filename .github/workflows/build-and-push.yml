@@ -11,7 +11,7 @@ permissions:
   id-token: write
 
 env:
-  GHCR_IMAGE: ghcr.io/${{ github.repository }}/python
+  GHCR_IMAGE: ghcr.io/${{ toLower(github.repository) }}/python
 
 jobs:
   build-and-push-ghcr:
