@@ -34,12 +34,12 @@ jobs:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
-      - name: Build and push to Docker Hub (multi-arch)
+      - name: Build and push to Docker Hub (single-arch amd64 - temporary workaround)
         uses: docker/build-push-action@v4
         with:
           context: ./python/${{ matrix.version }}
           file: ./python/${{ matrix.version }}/Dockerfile
-          platforms: linux/amd64,linux/arm64
+          platforms: linux/amd64
           push: true
           tags: |
             ${{ env.DOCKERHUB_IMAGE }}:${{ matrix.version }}

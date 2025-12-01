@@ -35,12 +35,12 @@ jobs:
           username: ${{ github.repository_owner }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Build and push python-tree to GHCR (multi-arch)
+      - name: Build and push python-tree to GHCR (single-arch amd64 - temporary workaround)
         uses: docker/build-push-action@v4
         with:
           context: ./python/3.14-tree
           file: ./python/3.14-tree/Dockerfile
-          platforms: linux/amd64,linux/arm64
+          platforms: linux/amd64
           push: true
           tags: |
             ${{ env.GHCR_IMAGE }}:3.14
@@ -65,12 +65,12 @@ jobs:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
-      - name: Build and push python-tree to Docker Hub (multi-arch)
+      - name: Build and push python-tree to Docker Hub (single-arch amd64 - temporary workaround)
         uses: docker/build-push-action@v4
         with:
           context: ./python/3.14-tree
           file: ./python/3.14-tree/Dockerfile
-          platforms: linux/amd64,linux/arm64
+          platforms: linux/amd64
           push: true
           tags: |
             ${{ env.DOCKERHUB_IMAGE }}:3.14

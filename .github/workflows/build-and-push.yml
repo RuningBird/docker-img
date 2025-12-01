@@ -35,12 +35,12 @@ jobs:
           username: ${{ github.repository_owner }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Build and push to GHCR (multi-arch)
+      - name: Build and push to GHCR (single-arch amd64 - temporary workaround)
         uses: docker/build-push-action@v4
         with:
           context: ./python/${{ matrix.version }}
           file: ./python/${{ matrix.version }}/Dockerfile
-          platforms: linux/amd64,linux/arm64
+          platforms: linux/amd64
           push: true
           tags: |
             ${{ env.GHCR_IMAGE }}:${{ matrix.version }}
