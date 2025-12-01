@@ -9,7 +9,7 @@ permissions:
   contents: read
 
 env:
-  DOCKERHUB_IMAGE: docker.io/${{ toLower(secrets.DOCKERHUB_USERNAME) }}/python
+  DOCKERHUB_IMAGE: docker.io/${{ secrets.DOCKERHUB_USERNAME }}/python
 
 jobs:
   build-and-push-dockerhub:

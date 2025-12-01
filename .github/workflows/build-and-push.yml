@@ -11,7 +11,7 @@ permissions:
   id-token: write
 
 env:
-  GHCR_IMAGE: ghcr.io/${{ toLower(github.repository_owner) }}/docker-img/python
+  GHCR_IMAGE: ghcr.io/runningbird/docker-img/python
 
 jobs:
   build-and-push-ghcr:
